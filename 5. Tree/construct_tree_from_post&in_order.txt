@@ -1,0 +1,44 @@
+
+class Solution {
+public:
+     TreeNode* help(vector<int>& inorder, vector<int>& postorder , int in_S , int in_E , int post_S , int post_E)
+    {
+        //base case
+        if(in_S > in_E)
+            return NULL;
+        int root= postorder[post_E];
+        int root_pos=-1;    //root's pos in Inorder
+        
+        for(int i=in_S ; i<=in_E ;i++)
+        {
+            if(inorder[i]==root)
+            {
+                root_pos=i;
+                break;
+            }
+        }
+        
+        // find out stating and ending pos of post and in for both left & right subtree
+        int lin_S= in_S;
+        int lin_E= root_pos-1;
+        int lpost_S= post_S;
+        int lpost_E= lin_E-lin_S+lpost_S;
+        
+        int rin_S= root_pos+1;
+        int rin_E=in_E;
+        int rpost_S=lpost_E+1 ;
+        int rpost_E=post_E-1;
+        
+        TreeNode* new_root=new TreeNode(root);
+        new_root->left=help(inorder , postorder , lin_S , lin_E , lpost_S ,lpost_E);
+        new_root->right=help(inorder , postorder , rin_S , rin_E , rpost_S ,rpost_E);
+        return new_root;
+    }
+   
+    TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
+         return help(inorder,postorder,0,inorder.size()-1,0,postorder.size()-1);
+    }
+};
+
+
+

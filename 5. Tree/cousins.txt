@@ -1,0 +1,49 @@
+
+/*In a binary tree, the root node is at depth 0, and children of each depth k node are at depth k+1.
+
+Two nodes of a binary tree are cousins if they have the same depth, but have different parents.
+
+We are given the root of a binary tree with unique values, and the values x and y of two different nodes in the tree.
+
+Return true if and only if the nodes corresponding to the values x and y are cousins.
+*/
+class Solution {
+public:
+    
+
+TreeNode* getDepth(TreeNode* root, int val, int depth, int& level) {
+        if (!root)
+            return NULL;
+
+        if (root->left && root->left->val == val)
+        {
+            level = depth;
+            return root;
+        }
+        if(root->right && root->right->val == val) 
+        {
+            level = depth;
+            return root;
+        }
+        TreeNode* left = getDepth(root->left, val, depth + 1, level);
+        if (left)
+            return left;
+
+        TreeNode* right = getDepth(root->right, val, depth + 1, level);
+        if (right)
+            return right;
+
+        return NULL;
+    }
+    
+    bool isCousins(TreeNode* root, int x, int y) 
+    {
+        int x_depth = -1, y_depth = -1;
+        TreeNode* x_parent = getDepth(root, x, 0, x_depth);
+        TreeNode* y_parent = getDepth(root, y, 0, y_depth);
+        if (x_depth == y_depth && x_parent != y_parent)
+            return true;
+        return false;
+    }
+};
+
