@@ -1,0 +1,50 @@
+
+
+class Solution {
+public:
+    
+    TreeNode* help(vector<int>& inorder, vector<int>& preorder , int in_S , int in_E , int pre_S , int pre_E)
+    {
+        //base case
+        if(in_S > in_E)
+            return NULL;
+        int root= preorder[pre_S];
+        int root_pos=-1;    //root's pos in Inorder
+        
+        for(int i=in_S ; i<=in_E ;i++)
+        {
+            if(inorder[i]==root)
+            {
+                root_pos=i;
+                break;
+            }
+        }
+        
+        // find out stating and ending pos of pre and in for both left & right subtree
+        int lin_S= in_S;
+        int lin_E= root_pos-1;
+        int lpre_S= pre_S+1;
+        int lpre_E= lin_E-lin_S+lpre_S;
+        
+        int rin_S= root_pos+1;
+        int rin_E=in_E;
+        int rpre_S=lpre_E+1 ;
+        int rpre_E=pre_E;
+        
+        TreeNode* new_root=new TreeNode(root);
+        new_root->left=help(inorder , preorder , lin_S , lin_E , lpre_S ,lpre_E);
+        new_root->right=help(inorder , preorder , rin_S , rin_E , rpre_S ,rpre_E);
+        return new_root;
+    }
+    
+     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder)
+     {
+    // help(in , pre , in_start , in_end , pre_start , pre_end)
+        return help(inorder,preorder,0,inorder.size()-1,0,preorder.size()-1);
+    }
+};
+
+
+
+
+

@@ -1,0 +1,13 @@
+knapsack problem
+subset sum
+Equal sum partition
+Min subset sum diff
+sum of two subset
+diffrence of two subset
+divide subset in 3 equal parts
+
+longest Common subsequance
+longest Common substring
+print longest Common subsequance
+print longest Common substring
+etc

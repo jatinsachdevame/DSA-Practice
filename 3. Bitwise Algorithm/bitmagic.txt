@@ -1,0 +1,8 @@
+swap 2 variables using xor: a=a^b,b=a^b,a=a^b
+count set bit: while(x) {if(x&1) count++}
+count number of bits flipped to convert a to b: find set bit in a^b
+turn off particular bit: mask=1<<(pos-1); x|=mask;
+turn on particular bit: mask=1<<(pos-1); x&=~mask;
+right most set bit : x&=~(x-1)
+left most set bit position of bit k= log2 (x) value=pow(2,k)
+find missing : xor of all elements with xor of 1 to n 

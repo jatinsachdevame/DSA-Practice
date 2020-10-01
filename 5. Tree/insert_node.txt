@@ -1,0 +1,72 @@
+
+// Inserting an element  using level order
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+struct Node
+{
+    int data;
+    Node *left , *right;
+    Node(int d)
+    {
+        data=d;
+        left=right=NULL;
+    }
+};
+// for printing tree
+void inorder(Node* root) 
+{ 
+    if (!root) 
+        return; 
+  
+    inorder(root->left); 
+    cout << " "<<root->data << " "; 
+    inorder(root->right); 
+} 
+
+// level order
+void insert(Node * root , int d)
+{
+    queue<Node*> q;
+    Node *temp;
+    Node *newnode= new Node(d);
+
+   q.push(root);
+   while(!q.empty())
+   {
+       temp=q.front();
+       q.pop();
+              if(temp->left)
+                 q.push(temp->left);
+              else{
+                  temp->left=newnode;
+                  break;}
+              
+              if(temp->right)
+                  q.push(temp->right);
+              else{
+                 temp->right=newnode;
+                 break;}
+   }
+   
+}
+
+int main()
+{
+    Node *root = new Node(1);
+    root->left=new Node(2);
+    root->right=new Node(3);
+    root->left->left=new Node(4);
+    root->left->right=new Node(5);
+    
+   cout<<"\n Tree before insertion : \n";
+   inorder(root);
+   insert(root,6);
+   insert(root,7);
+   cout<<"\n Tree after insertion : \n";
+   inorder(root);
+    
+    
+    return 0;
+}
+

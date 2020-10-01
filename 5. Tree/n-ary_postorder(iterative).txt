@@ -1,0 +1,24 @@
+class Solution {
+public:
+  
+    vector<int> postorder(Node* root) {
+               if(!root)
+               return{};
+        stack<Node*> s;
+        vector<int> ans;
+        s.push(root);
+        
+        while(!s.empty())
+        {
+            Node* temp = s.top();
+            s.pop();
+             ans.push_back(temp->val);
+            for(int i=0;i<temp->children.size();i++)
+            {
+                s.push(temp->children[i]);
+            }
+         }
+        reverse(ans.begin() , ans.end());
+        return ans;
+    }
+};
