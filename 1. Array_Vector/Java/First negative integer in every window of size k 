@@ -1,0 +1,52 @@
+# First negative integer in every window of size k 
+
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) throws IOException {
+   BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+   int t = Integer.parseInt(br.readLine());
+	
+	while(t-->0){
+	    int n = Integer.parseInt(br.readLine());
+	    String str[] = br.readLine().trim().split(" ");
+	    int arr[] = new int[n];
+	     for(int i=0; i<n; i++){
+	       arr[i] = Integer.parseInt(str[i]);
+	    }
+	     int k = Integer.parseInt(br.readLine());
+	     
+	     Queue <Integer> q = new LinkedList<>();
+	     
+	     for(int i=0; i<=(n-k); i++){
+	         for(int j=i; j<(i+k); j++){
+	             if(arr[j]<0){
+	                 q.add(arr[j]);
+	                 break;
+	             }
+	             
+	         }
+	         if(q.isEmpty()){
+	             System.out.print(0+" ");
+	         }
+	         else{
+	             System.out.print(q.poll()+" "); 
+	         }
+	         
+	     }
+	     
+	     System.out.println();
+	     
+	  
+	  
+	 
+	}
+}
+
+}
+
