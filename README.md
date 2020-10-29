@@ -4,7 +4,7 @@ This repository is a collection of different algorithms and data structure. You 
 ### This repository is open for contribution.
 
 ### Please follow the contribution style.
-- Use camel case for file naming.
+- Use camel-case for file naming.
 - Submit the code in the proper folder (topic and language wise).
 - Please write the problem statement in comments in the code if the problem is not clear by it's name.
 
