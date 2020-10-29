@@ -16,7 +16,6 @@ class Graph
 			adj[i] = new List<int>(); 
 	} 
 
-	//Function to Add an edge into the graph 
 	void AddEdge(int v, int w) 
 	{ 
 		adj[v].Add(w); // Add w to v's list. 
