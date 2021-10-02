@@ -1,0 +1,46 @@
+# Minimum Energy
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Minimum {
+	public static void main (String[] args) {
+	Scanner sc = new Scanner(System.in);
+	int t = sc.nextInt();
+	//sc.nextLine();
+	
+	while(t-->0){
+	    int n = sc.nextInt();
+	    int arr[] = new int[n];
+	    for(int i=0; i<n; i++){
+	        arr[i] = sc.nextInt();
+	    }
+	    
+	    int min =1;
+	    int sumen=0;
+	    boolean flag = false;
+	    for(int i=0; i<n; i++){
+	        sumen+=arr[i];
+	        if(sumen<0){
+	            min =Math.max(Math.abs(sumen)+1, min);
+	            flag = true;
+	        }
+	    }
+	    
+	    if(flag){
+	        System.out.println(min);
+	    }
+	    else{
+	        System.out.println(1);
+	    }
+	  
+	   
+	    
+	    
+	    
+	    
+	}
+	}
+}
